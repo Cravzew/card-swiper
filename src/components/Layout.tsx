@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import {MotionValue} from "framer-motion";
 
 const LayoutStyled = styled.div`
   max-width: ${(props: ILayoutProps) => props.width || '1440px'};
@@ -12,7 +13,7 @@ const LayoutStyled = styled.div`
 
 interface ILayoutProps {
     width?: string,
-    children: React.ReactNode
+    children: React.ReactNode,
 }
 
 function Layout(props: ILayoutProps) {
