@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import {useAppDispatch, useAppSelector} from "../../store/store";
 import CardSuccess from "./CardSuccess";
 import CardError from "./CardError";
-import {motion, MotionValue} from 'framer-motion'
+import {motion, useMotionValue} from 'framer-motion'
 import {fetchPhoto} from "../../store/reducers/photoReducer";
 
 
@@ -16,15 +16,24 @@ const CardStyled = styled.div`
   box-shadow: 0 0 200px #000;
 `
 
-function Card({x}: { x: MotionValue<number> }) {
+function Card() {
     const {status, error, url} = useAppSelector(state => state.photo)
+    const [update, setUpdate] = useState(false)
     const dispatch = useAppDispatch()
 
     function handleNext(e: any) {
-        if (e.x === 1500 || e.x === 0) {
-            dispatch(fetchPhoto())
+        if (e.x >= 1500 || e.x <= 100) {
+            setUpdate(true)
+        } else {
+            setUpdate(false)
         }
     }
+
+    useEffect(() => {
+        if (update) dispatch(fetchPhoto())
+    }, [update])
+
+    const x = useMotionValue(0)
 
     return (
         <motion.div

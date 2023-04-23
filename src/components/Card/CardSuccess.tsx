@@ -1,6 +1,4 @@
-import React from 'react';
-import {useAppDispatch} from "../../store/store";
-import {fetchPhoto} from "../../store/reducers/photoReducer";
+import React, {useState} from 'react';
 import styled from "styled-components";
 
 const CardSuccessStyled = styled.div`
@@ -14,13 +12,16 @@ const CardSuccessStyled = styled.div`
 `
 
 function CardSuccess({url}: { url: string; }) {
+    const [visible, setVisible] = useState(false)
 
     const photo = Object.values(url)
 
     return (
-        <CardSuccessStyled>
-            <img style={{
-                border: '1px solid gray'
+        <CardSuccessStyled style={{
+            visibility: `${visible ? 'visible' : 'hidden'}`
+        }}>
+            <img onLoad={() => setVisible(true)} style={{
+                border: '1px solid gray',
             }} src={photo + ''} alt=""/>
         </CardSuccessStyled>
     );
