@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import Card from "./components/Card/Card";
 import {useAppDispatch} from "./store/store";
 import {fetchPhoto} from "./store/reducers/photoReducer";
+import Header from "./components/Header";
 
 function App() {
     const dispatch = useAppDispatch()
@@ -13,7 +14,8 @@ function App() {
 
     return (
         <>
-            <Layout width={'1000px'} boxShadow={'0 0 10px 0'}>
+            <Header/>
+            <Layout content={'true'} height={'100vh'} boxShadow={'0 0 1px 0'}>
                 <Card/>
             </Layout>
         </>
