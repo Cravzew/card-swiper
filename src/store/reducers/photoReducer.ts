@@ -1,9 +1,15 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
+export interface IPhotoObjectProps {
+    id: string,
+    url: string
+}
+
 export interface IPhotoProps {
     url: string,
     status: string,
-    error: any
+    error: any,
+    filters: IPhotoObjectProps[]
 }
 
 export const fetchPhoto = createAsyncThunk(
@@ -28,13 +34,21 @@ export const fetchPhoto = createAsyncThunk(
 const initialState: IPhotoProps = {
     url: '',
     status: null,
-    error: null
+    error: null,
+    filters: []
 }
 
 export const photoSlice = createSlice({
     name: 'photo',
     initialState,
-    reducers: {},
+    reducers: {
+        addToFilters(state, action) {
+            state.filters.push({
+                id: Math.random().toString(36).substring(2, 15),
+                url: action.payload
+            })
+        }
+    },
     extraReducers: (fetch) => {
         fetch.addCase(fetchPhoto.pending, (state) => {
             state.status = 'loading';
@@ -51,6 +65,6 @@ export const photoSlice = createSlice({
     }
 })
 
-export const {} = photoSlice.actions
+export const {addToFilters} = photoSlice.actions
 
 export default photoSlice.reducer

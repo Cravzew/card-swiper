@@ -1,6 +1,6 @@
 import React from "react";
 import {createRoot} from 'react-dom/client';
-import App from "./App";
+import App from "./pages/App";
 import {createGlobalStyle} from "styled-components";
 import SFUIDisplayThinWoff2 from './fonts/SFUIDisplay-Thin.woff2'
 import SFUIDisplayThinWoff from './fonts/SFUIDisplay-Thin.woff'
@@ -14,6 +14,8 @@ import SFUIDisplayBoldWoff2 from './fonts/SFUIDisplay-Bold.woff2'
 import SFUIDisplayBoldWoff from './fonts/SFUIDisplay-Bold.woff'
 import {Provider} from "react-redux";
 import {store} from "./store/store";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import Liked from "./pages/Liked";
 
 const GlobalStyled = createGlobalStyle`
   *,
@@ -115,10 +117,20 @@ const GlobalStyled = createGlobalStyle`
   }
 `
 
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <><GlobalStyled/><App/></>,
+    },
+    {
+        path: '/liked',
+        element: <><GlobalStyled/><Liked/></>
+    }
+]);
+
 const root = createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>
-        <GlobalStyled/>
-        <App/>
+        <RouterProvider router={router}/>
     </Provider>
 )

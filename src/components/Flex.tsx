@@ -7,6 +7,7 @@ const FlexStyled = styled.div`
   align-items: ${(props: IFlexProps) => props.align || 'stretch'};
   flex-direction: ${(props: IFlexProps) => props.direction || 'stretch'};
   margin: ${(props: IFlexProps) => props.margin || '0'};
+  flex-wrap: ${(props: IFlexProps) => props.wrap || 'nowrap'};
 `
 
 export interface IFlexProps {
@@ -14,6 +15,7 @@ export interface IFlexProps {
     align?: string,
     direction?: string,
     margin?: string,
+    wrap?: string
     children: React.ReactNode
 }
 

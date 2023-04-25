@@ -9,8 +9,8 @@ const LayoutStyled = styled.div`
   box-shadow: ${(props: ILayoutProps) => props.boxShadow || '0'};
   ${(props: ILayoutProps) => props.content && css`
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   `}
 `
 
@@ -21,7 +21,7 @@ interface ILayoutProps {
     padding?: string,
     height?: string,
     boxShadow?: string,
-    content?: string,
+    content?: string
 }
 
 function Layout(props: ILayoutProps) {
