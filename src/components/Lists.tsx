@@ -1,7 +1,7 @@
 import React from 'react';
-import ItemCard from "./ItemCard";
-import {useAppSelector} from "../../store/store";
-import Flex from "../Flex";
+import {useAppSelector} from "../store/store";
+import Flex from "./Flex";
+import ImageCard from "./ImageCard";
 
 function Lists() {
 
@@ -21,7 +21,7 @@ function Lists() {
                         marginTop: '30px',
                         fontSize: '22px'
                     }}>Lists is empty</p> :
-                    filters.map((item) => <ItemCard key={item.id} url={item.url}/>)
+                    filters.map((item) => <ImageCard secondary={'true'} key={item.id} url={item.url}/>)
                 }
             </Flex>
         </div>

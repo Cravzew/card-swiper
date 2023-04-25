@@ -29,8 +29,10 @@ function Header() {
                         </Link>
                     </Flex>
                     <Flex>
-                        <Link to={'/liked'}>
-                            Liked
+                        <Link to={'/liked'} style={{
+                            textDecoration: 'underline'
+                        }}>
+                            LIKED
                         </Link>
                     </Flex>
                 </Flex>

@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
-import {useAppDispatch, useAppSelector} from "../../store/store";
+import {useAppDispatch, useAppSelector} from "../store/store";
 import {motion, useMotionValue} from 'framer-motion'
-import {addToFilters, fetchPhoto} from "../../store/reducers/photoReducer";
-import CardError from "./CardError";
-import CardSuccess from "./CardSuccess";
-import {setShow} from "../../store/reducers/trainingReducer";
+import {addToFilters, fetchPhoto} from "../store/reducers/photoReducer";
+import ImageCard from "./ImageCard";
+import {setShow} from "../store/reducers/trainingReducer";
 
 
 const CardStyled = styled.div`
@@ -55,12 +54,17 @@ function Card() {
         <motion.div
             drag="x"
             dragConstraints={{left: 0, right: 0}}
-            style={{x,zIndex: 1}}
+            style={{x, zIndex: 1}}
             onDrag={handleNext}
         >
             <CardStyled>
-                {status === 'resolved' && <CardSuccess url={url}/>}
-                {status === 'rejected' && <CardError error={error}/>}
+                {status === 'resolved' && <ImageCard primary={'true'} url={url}/>}
+                {status === 'rejected' && <div style={{
+                    color: "red",
+                    padding: '20px'
+                }}>
+                    Error: <br/>
+                    {error}</div>}
             </CardStyled>
         </motion.div>
     );

@@ -39,7 +39,8 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     plugins: [new HtmlWebpackPlugin({
-        template: "./src/template/index.html"
+        template: "./src/template/index.html",
+        favicon: "./src/images/favicon.png"
     }), new MiniCssExtractPlugin()],
     optimization: {
         runtimeChunk: 'single',
