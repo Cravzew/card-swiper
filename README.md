@@ -1,6 +1,6 @@
 # card-swiper
 
-Tinder for anime
+Swiper photos
 
 ## Install
 
